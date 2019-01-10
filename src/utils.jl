@@ -14,7 +14,7 @@ end
 @generated function check_parent_and_struct_match(::Type{ST},::Type{T}) where {ST,T}
 
     t = ST
-    allsame = true
+    allsame = false
     isstruct = false
     NF = 1
     if fieldcount(ST) != 0 

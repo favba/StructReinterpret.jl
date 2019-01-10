@@ -173,3 +173,15 @@ end
 
     @test_throws ArgumentError struct_reinterpret(Float64,a)
 end
+
+struct DS
+    x::Int
+    y::Int
+    DS(x::Int,y::Int) = new(x,2*x)
+end
+
+@testset "Test bypass of defined constructors" begin
+    a = [1,2]
+    r = struct_reinterpret(DS,a)
+    @test r[1] === DS(1,1)
+end
